@@ -47,12 +47,17 @@ final class StartViewController: UIViewController {
     
     @IBAction func plusOrMinus(_ sender: UIButton) {
         negative = !negative
+        guard let indexStart = enter.text?.startIndex else {return }
+        if negative {
+            enter.text?.insert("-", at: indexStart)
+        }
+        else {
+            enter.text?.remove(at: (enter.text?.firstIndex(of: "-"))!)
+        }
     }
     
     @IBAction func procent(_ sender: UIButton) {
-        print("result1 = \(result)")
         result /= 100
-        print("result2 = \(result)")
         isAct = true
         output()
         instance = String(result)
@@ -115,21 +120,23 @@ final class StartViewController: UIViewController {
     }
     
     @IBAction func equally(_ sender: UIButton) {
+        
         isAct = true
         if isSecondEnter == true {
-            if let second = enter.text {
+            if var second = enter.text {
+                second = removeSpaces(with: second)
                 if let secondDouble = Double(second) {
                     isSecondEnter = false
-                    getResult(second: secondDouble)
+                    getResult()
                 }
             }
         }
     }
     
     private func writeNumber(_ num: Int) {
-        if enter.text?.count == 9 && !isAct {return }
+        if enter.text?.count == 11 && !isAct {return }
         
-        if isAct == true {
+        if isAct {
             changeColorBack()
             firstEnter = result
             enter.text = ""
@@ -137,39 +144,46 @@ final class StartViewController: UIViewController {
             isAct = false
         }
         
+        guard var string = enter.text else {return }
+        
         acOUt.setTitle("C", for: .normal)
+        
         let numStr = String(num)
         
-        if isAct == false && enter.text != "0" {
-            guard let _ = enter.text else {return }
-            enter.text! += numStr
+        if !isAct && enter.text != "0" {
+            string += numStr
+            string = removeSpaces(with: string)
+            enter.text! = outputWithSpaces(with: string)
         }
         else {
+            string = String(num)
             enter.text = numStr
         }
         
+
         instance += numStr
-        result = Double(enter.text!) ?? 0
+        string = removeSpaces(with: string)
+        result = Double(string) ?? 0
     }
     
-    private func getResult(second num: Double) {
-        
+    private func getResult() {
+
         if isActPlus {
-            result = firstEnter + num
+            result += firstEnter
         }
         else if isActMinus {
-            result = firstEnter - num
+            result = firstEnter - result
         }
         else if isActMultiply {
-            result = firstEnter * num
+            result *= firstEnter
         }
         else if isActDevide {
-            if num != 0 {
-                result = firstEnter / num
+            if result != 0 {
+                result = firstEnter / result
             }
         }
         
-        if num != 0 {
+        if result != 0 {
             output()
         }
         else {
@@ -181,35 +195,41 @@ final class StartViewController: UIViewController {
     private func output() {
         
         if Double(Int(result)) - result == 0 {
-            let intResultStr = String(Int(result))
+            var intResultStr = String(Int(result))
             if intResultStr.count > 9 {
                 if let lastNum = intResultStr.last {
-                    enter.text = String(intResultStr.prefix(8)) + ".." + String(lastNum)
+                    var resultStrPrefix = String(intResultStr.prefix(8))
+                    resultStrPrefix = addSpaces(with: resultStrPrefix, to: 2)
+                    enter.text = resultStrPrefix + ".." + String(lastNum)
                 }
             }
             else {
+                intResultStr = outputWithSpaces(with: intResultStr)
                 enter.text = intResultStr
             }
         }
         else {
-            let doubleRsultStr = String(result)
-            if doubleRsultStr.count > 10 {
-                if let lastNum = doubleRsultStr.last {
-                    enter.text = String(doubleRsultStr.prefix(9)) + ".." + String(lastNum)
-                }
-            }
-            else {
-                enter.text = doubleRsultStr
-            }
+            let doubleResultString = String(result)
+            guard let indexDote = doubleResultString.firstIndex(of: ".") else {return }
+            let rangeInt = doubleResultString.startIndex ... indexDote
+            var stringBeforeDote = String(doubleResultString[rangeInt])
+            stringBeforeDote.removeLast()
+            let rangeDouble = indexDote ..< doubleResultString.endIndex
+            let stringAfterDote = String(doubleResultString[rangeDouble])
+            stringBeforeDote = outputWithSpaces(with: stringBeforeDote)
+            let stringCommon = stringBeforeDote + stringAfterDote
+            enter.text = stringCommon
         }
     }
     
     private func changeColor(_ button: UIButton) {
+        
         button.backgroundColor = .white
         button.setTitleColor(.orange, for: .normal)
     }
     
     private func changeColorBack() {
+        
         plusOut.backgroundColor = .orange
         plusOut.setTitleColor(.white, for: .normal)
         
@@ -224,17 +244,47 @@ final class StartViewController: UIViewController {
     }
     
     private func defaultSet() {
+        
         isActPlus = false
         isActMinus = false
         isActMultiply = false
         isActDevide = false
     }
     
-//    MARK: - GREAT IDEA !!!
+    private func outputWithSpaces(with string: String) -> String {
+        
+        var string = string
+        if string.count > 6 {
+            string = addSpaces(with: string, to: string.count - 6)
+            string = addSpaces(with: string, to: string.count - 3)
+        }
+        else if string.count <= 6 && string.count >= 4 {
+            string = addSpaces(with: string, to: string.count - 3)
+        }
+        return string
+    }
     
-//    func offAndOnSomething(what on: Bool) {
-//
-//    }
+    private func addSpaces(with string: String, to index: Int) -> String {
+        
+        var str = string
+        let indexForSpace = str.index(str.startIndex, offsetBy: index)
+        str.insert(" ", at: indexForSpace)
+        return str
+    }
+    
+    private func removeSpaces(with string: String) -> String {
+        
+
+        var string = string
+        if let indexFirstSpace = string.firstIndex(of: " ") {
+            string.remove(at: indexFirstSpace)
+        }
+        if let indexSecondSpace = string.lastIndex(of: " ") {
+            string.remove(at: indexSecondSpace)
+        }
+        return string
+    }
+    
     
     @IBAction func nine(_ sender: UIButton) {
         writeNumber(9)
