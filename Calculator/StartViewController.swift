@@ -15,6 +15,21 @@ final class StartViewController: UIViewController {
     @IBOutlet weak var multiplyOut: UIButton!
     @IBOutlet weak var minusOut: UIButton!
     @IBOutlet weak var plusOut: UIButton!
+    @IBOutlet weak var plusOrMinus: UIButton!
+    @IBOutlet weak var procent: UIButton!
+    @IBOutlet weak var equal: UIButton!
+    @IBOutlet weak var dote: UIButton!
+    @IBOutlet weak var zero: UIButton!
+    @IBOutlet weak var one: UIButton!
+    @IBOutlet weak var two: UIButton!
+    @IBOutlet weak var three: UIButton!
+    @IBOutlet weak var four: UIButton!
+    @IBOutlet weak var five: UIButton!
+    @IBOutlet weak var six: UIButton!
+    @IBOutlet weak var seven: UIButton!
+    @IBOutlet weak var eight: UIButton!
+    @IBOutlet weak var nine: UIButton!
+    
     private var result = 0.0
     private var negative = false
     private var isAct = false
@@ -27,13 +42,19 @@ final class StartViewController: UIViewController {
     private var firstEnter = 0.0
     private var secondEnter = 0.0
     
+    override func viewDidLayoutSubviews() { //<-- Add code here
+        makeButtonsRounded()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
         enter.text = "0"
     }
     
+    
     @IBAction func aC(_ sender: UIButton) {
+        
         acOUt.setTitle("AC", for: .normal)
         enter.text = "0"
         result = 0.0
@@ -46,6 +67,7 @@ final class StartViewController: UIViewController {
     }
     
     @IBAction func plusOrMinus(_ sender: UIButton) {
+        
         negative = !negative
         guard let indexStart = enter.text?.startIndex else {return }
         if !isAct && negative && !(enter.text?.contains("-"))!{
@@ -66,12 +88,14 @@ final class StartViewController: UIViewController {
     }
     
     @IBAction func procent(_ sender: UIButton) {
+        
         result /= 100
         isAct = true
         output()
     }
     
     @IBAction func multiply(_ sender: UIButton) {
+        
         defaultSet()
         changeColorBack()
         changeColor(multiplyOut)
@@ -137,6 +161,7 @@ final class StartViewController: UIViewController {
         }
     }
     
+//    MARK: - The function displays the numbers that the user has pressed
     private func writeNumber(_ num: Int) {
         if enter.text?.count == 11 && !isAct {return }
         
@@ -176,6 +201,7 @@ final class StartViewController: UIViewController {
         result = Double(string) ?? 0
     }
     
+    //    MARK: - Two functions at the bottom count and output the answer
     private func getResult() {
 
         if isActPlus {
@@ -229,6 +255,7 @@ final class StartViewController: UIViewController {
         }
     }
     
+//    MARK: - Two functions at the bottom changes the color of the background and the tile of one of the buttons (plus, minus, divide, multiply) depending on what action the user wants to perform.
     private func changeColor(_ button: UIButton) {
         
         button.backgroundColor = .white
@@ -259,6 +286,7 @@ final class StartViewController: UIViewController {
         isActDevide = false
     }
     
+    //    MARK: - Two functions at the bottom are responsible for indents in large numbers
     private func outputWithSpaces(with string: String) -> String {
         
         var string = string
@@ -334,5 +362,30 @@ final class StartViewController: UIViewController {
         if enter.text != "0" {
             writeNumber(0)
         }
+    }
+    
+    private func makeButtonsRounded() {
+
+        let cornerRadius = acOUt.frame.height * 0.5
+        acOUt.layer.cornerRadius = cornerRadius
+        devideOut.layer.cornerRadius = cornerRadius
+        multiplyOut.layer.cornerRadius = cornerRadius
+        plusOut.layer.cornerRadius = cornerRadius
+        minusOut.layer.cornerRadius = cornerRadius
+        plusOrMinus.layer.cornerRadius = cornerRadius
+        procent.layer.cornerRadius = cornerRadius
+        equal.layer.cornerRadius = cornerRadius
+        dote.layer.cornerRadius = cornerRadius
+        one.layer.cornerRadius = cornerRadius
+        two.layer.cornerRadius = cornerRadius
+        three.layer.cornerRadius = cornerRadius
+        four.layer.cornerRadius = cornerRadius
+        five.layer.cornerRadius = cornerRadius
+        six.layer.cornerRadius = cornerRadius
+        seven.layer.cornerRadius = cornerRadius
+        eight.layer.cornerRadius = cornerRadius
+        nine.layer.cornerRadius = cornerRadius
+        zero.layer.cornerRadius = zero.frame.height * 0.5
+        
     }
 }
