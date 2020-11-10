@@ -24,18 +24,18 @@ final class StartViewController: UIViewController {
     private var isActMultiply = false
     private var isSecondEnter = false
     private var isItFraction = false
-    private var instance = ""
     private var firstEnter = 0.0
+    private var secondEnter = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         enter.text = "0"
     }
     
     @IBAction func aC(_ sender: UIButton) {
         acOUt.setTitle("AC", for: .normal)
         enter.text = "0"
-        instance = ""
         result = 0.0
         negative = false
         isAct = false
@@ -48,11 +48,20 @@ final class StartViewController: UIViewController {
     @IBAction func plusOrMinus(_ sender: UIButton) {
         negative = !negative
         guard let indexStart = enter.text?.startIndex else {return }
-        if negative {
+        if !isAct && negative && !(enter.text?.contains("-"))!{
             enter.text?.insert("-", at: indexStart)
+            result = Double(enter.text!)!
         }
-        else {
+        else if ((enter.text?.firstIndex(of: "-")) != nil) && !isAct {
             enter.text?.remove(at: (enter.text?.firstIndex(of: "-"))!)
+            result *= -1
+        }
+        else if isAct {
+            changeColorBack()
+            firstEnter = Double(enter.text!)!
+            enter.text = "-0"
+            isSecondEnter = true
+            isAct = false
         }
     }
     
@@ -60,7 +69,6 @@ final class StartViewController: UIViewController {
         result /= 100
         isAct = true
         output()
-        instance = String(result)
     }
     
     @IBAction func multiply(_ sender: UIButton) {
@@ -123,13 +131,9 @@ final class StartViewController: UIViewController {
         
         isAct = true
         if isSecondEnter == true {
-            if var second = enter.text {
-                second = removeSpaces(with: second)
-                if let secondDouble = Double(second) {
-                    isSecondEnter = false
-                    getResult()
-                }
-            }
+            secondEnter = result
+            isSecondEnter = false
+            getResult()
         }
     }
     
@@ -150,45 +154,48 @@ final class StartViewController: UIViewController {
         
         let numStr = String(num)
         
-        if !isAct && enter.text != "0" {
+        if !isAct && enter.text != "0" && enter.text != "-0" {
             string += numStr
             string = removeSpaces(with: string)
-            enter.text! = outputWithSpaces(with: string)
+            if !string.contains(".") {
+                enter.text! = outputWithSpaces(with: string)
+            }
+            else {
+                enter.text! += numStr
+            }
         }
         else {
-            string = String(num)
-            enter.text = numStr
+            if enter.text == "-0" && num != 0{
+                enter.text = "-" + numStr
+            }
+            else if enter.text == "0" {
+                enter.text = numStr
+            }
+            string = enter.text!
         }
-        
-
-        instance += numStr
-        string = removeSpaces(with: string)
         result = Double(string) ?? 0
     }
     
     private func getResult() {
 
         if isActPlus {
-            result += firstEnter
+            result = firstEnter + secondEnter
         }
         else if isActMinus {
-            result = firstEnter - result
+            result = firstEnter - secondEnter
         }
         else if isActMultiply {
-            result *= firstEnter
+            result = firstEnter * secondEnter
         }
         else if isActDevide {
-            if result != 0 {
-                result = firstEnter / result
+            if secondEnter != 0 {
+                result = firstEnter / secondEnter
+            }
+            else {
+                enter.text = "Ошибка"
             }
         }
-        
-        if result != 0 {
-            output()
-        }
-        else {
-            enter.text = "Ошибка"
-        }
+        output()
         defaultSet()
     }
     
@@ -245,6 +252,7 @@ final class StartViewController: UIViewController {
     
     private func defaultSet() {
         
+        isAct = false
         isActPlus = false
         isActMinus = false
         isActMultiply = false
