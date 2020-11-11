@@ -42,7 +42,7 @@ final class StartViewController: UIViewController {
     private var firstEnter = 0.0
     private var secondEnter = 0.0
     
-    override func viewDidLayoutSubviews() { //<-- Add code here
+    override func viewDidLayoutSubviews() {
         makeButtonsRounded()
     }
     
@@ -161,7 +161,9 @@ final class StartViewController: UIViewController {
         }
     }
     
+    
 //    MARK: - The function displays the numbers that the user has pressed
+    
     private func writeNumber(_ num: Int) {
         if enter.text?.count == 11 && !isAct {return }
         
@@ -201,7 +203,9 @@ final class StartViewController: UIViewController {
         result = Double(string) ?? 0
     }
     
+    
     //    MARK: - Two functions at the bottom count and output the answer
+    
     private func getResult() {
 
         if isActPlus {
@@ -255,7 +259,9 @@ final class StartViewController: UIViewController {
         }
     }
     
+    
 //    MARK: - Two functions at the bottom changes the color of the background and the tile of one of the buttons (plus, minus, divide, multiply) depending on what action the user wants to perform.
+    
     private func changeColor(_ button: UIButton) {
         
         button.backgroundColor = .white
@@ -286,7 +292,9 @@ final class StartViewController: UIViewController {
         isActDevide = false
     }
     
+    
     //    MARK: - Two functions at the bottom are responsible for indents in large numbers
+    
     private func outputWithSpaces(with string: String) -> String {
         
         var string = string
@@ -308,9 +316,11 @@ final class StartViewController: UIViewController {
         return str
     }
     
+    
+    //    MARK: - The function at the bottom removes indents
+    
     private func removeSpaces(with string: String) -> String {
         
-
         var string = string
         if let indexFirstSpace = string.firstIndex(of: " ") {
             string.remove(at: indexFirstSpace)
@@ -366,7 +376,10 @@ final class StartViewController: UIViewController {
     
     private func makeButtonsRounded() {
 
-        let cornerRadius = acOUt.frame.height * 0.5
+        let cornerRadius1 = acOUt.frame.height * 0.5
+        let cornerRadius2 = acOUt.frame.width * 0.5
+        let cornerRadius = cornerRadius1 >= cornerRadius2 ? cornerRadius2 : cornerRadius1
+        
         acOUt.layer.cornerRadius = cornerRadius
         devideOut.layer.cornerRadius = cornerRadius
         multiplyOut.layer.cornerRadius = cornerRadius
@@ -386,6 +399,5 @@ final class StartViewController: UIViewController {
         eight.layer.cornerRadius = cornerRadius
         nine.layer.cornerRadius = cornerRadius
         zero.layer.cornerRadius = zero.frame.height * 0.5
-        
     }
 }
