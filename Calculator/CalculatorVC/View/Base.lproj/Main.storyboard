@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,7 +34,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="aC:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ocq-YZ-8Kf"/>
+                                                    <action selector="didSelectAC:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SbP-wd-RqC"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MB3-La-W9j">
@@ -46,7 +46,7 @@
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="plusOrMinus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YSs-ic-3jA"/>
+                                                    <action selector="didSelectPlusOrMinus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ap8-tx-N6B"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XIB-yb-52D">
@@ -57,7 +57,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="procent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3xk-eV-Whv"/>
+                                                    <action selector="didSelectProcent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q4U-oM-gCz"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Huu-RF-kve">
@@ -68,7 +68,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="devide:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gqa-ck-4PG"/>
+                                                    <action selector="didSelectDevide:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1kY-JS-Ns2"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -121,7 +121,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="multiply:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T1q-db-CLu"/>
+                                                    <action selector="didSelectMultiply:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aNm-tc-izO"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -174,7 +174,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="minus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jJ9-Jr-9nz"/>
+                                                    <action selector="didSelectMinus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gu6-X7-zqO"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -227,7 +227,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="plus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wae-xd-kAk"/>
+                                                    <action selector="didSelectPlus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qmB-2x-eK3"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -257,7 +257,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="fractionalPart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HjS-lW-vZf"/>
+                                                    <action selector="didSelectFractionalPart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9l5-xZ-smj"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8V-Mb-gQl">
@@ -271,7 +271,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="equally:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uk3-4T-DE7"/>
+                                                    <action selector="didSelectEqually:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ago-33-xAs"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -293,10 +293,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lVg-nZ-qCb">
-                                <rect key="frame" x="11" y="20" width="392" height="203"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="203" id="hpl-ac-usf"/>
-                                </constraints>
+                                <rect key="frame" x="11" y="88" width="392" height="119.66666666666669"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -305,30 +302,29 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="lVg-nZ-qCb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="11" id="6Rl-iP-UC5"/>
-                            <constraint firstItem="lVg-nZ-qCb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="BO4-cn-acC"/>
+                            <constraint firstItem="lVg-nZ-qCb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="11" id="3c9-Vj-SHt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lVg-nZ-qCb" secondAttribute="trailing" constant="11" id="I9N-LU-zoD"/>
+                            <constraint firstItem="BWx-oL-UrM" firstAttribute="top" secondItem="lVg-nZ-qCb" secondAttribute="bottom" constant="23.329999999999998" id="Jh0-Za-saP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BWx-oL-UrM" secondAttribute="bottom" constant="20" id="LnN-L0-Qwl"/>
-                            <constraint firstItem="BWx-oL-UrM" firstAttribute="top" secondItem="lVg-nZ-qCb" secondAttribute="bottom" constant="8" id="Nuj-eI-8US"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lVg-nZ-qCb" secondAttribute="trailing" constant="11" id="dXp-8d-5PS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BWx-oL-UrM" secondAttribute="trailing" constant="12" id="fij-ja-rdQ"/>
                             <constraint firstItem="BWx-oL-UrM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="yYj-ms-gy7"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="Enter" destination="lVg-nZ-qCb" id="h5N-Rp-GA4"/>
-                        <outlet property="acOUt" destination="bod-wY-dcy" id="jcj-4X-C6b"/>
-                        <outlet property="devideOut" destination="Huu-RF-kve" id="tGw-Jo-v6f"/>
+                        <outlet property="ac" destination="bod-wY-dcy" id="XVR-DP-YKJ"/>
+                        <outlet property="devide" destination="Huu-RF-kve" id="TAT-52-agx"/>
                         <outlet property="dote" destination="IVl-Bm-pD9" id="UFD-Tu-JQ5"/>
                         <outlet property="eight" destination="a3O-JX-lYs" id="h1T-Xi-4up"/>
                         <outlet property="equal" destination="c8V-Mb-gQl" id="3wa-hV-opD"/>
                         <outlet property="five" destination="hqA-gx-noc" id="ad2-tZ-WoJ"/>
                         <outlet property="four" destination="HRg-1G-tYV" id="VKq-Hk-IFr"/>
-                        <outlet property="minusOut" destination="XQN-nB-iPY" id="WaO-av-oyc"/>
-                        <outlet property="multiplyOut" destination="lNH-oE-BDa" id="mXz-ZW-paX"/>
+                        <outlet property="minus" destination="XQN-nB-iPY" id="WcE-U4-5vH"/>
+                        <outlet property="multiply" destination="lNH-oE-BDa" id="o4L-aL-FDt"/>
                         <outlet property="nine" destination="nep-Gq-EGb" id="HtL-Rg-ig1"/>
                         <outlet property="one" destination="GG5-nL-wqQ" id="pgT-14-W2T"/>
-                        <outlet property="plusOrMinus" destination="MB3-La-W9j" id="eet-a1-5o5"/>
-                        <outlet property="plusOut" destination="zf0-ls-cT7" id="the-oB-Bm2"/>
+                        <outlet property="plus" destination="zf0-ls-cT7" id="L9w-KK-MOr"/>
+                        <outlet property="plusOrMinus" destination="MB3-La-W9j" id="OTn-B6-a7t"/>
                         <outlet property="procent" destination="XIB-yb-52D" id="Gjh-xu-4XF"/>
                         <outlet property="seven" destination="DR9-tB-syf" id="0ta-Rp-8X4"/>
                         <outlet property="six" destination="KY2-D8-C3H" id="4kS-Km-u1W"/>
