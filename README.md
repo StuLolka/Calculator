@@ -3,9 +3,7 @@
 The calculator is completely my work. 
 
 
-![Screenshot](ForReadMe/Screen.png)
+![Screenshot](Screen/Снимок экрана 2021-07-06 в 18.07.06.png)
 
 
 # Using
-
-The calculator will display the answer when you click on "=". 
